@@ -34,7 +34,7 @@ Created Github Repository and required files such as Makerfile, requirement.txt,
 Built a main.py and `main_test.py` in `main.py` this import CSV file(HR.csv) and calculate average, median, and Standard deviation of retired employees by ***`Polars`***. Additionally, plot a histrogram to visualize the age distrubution of the retired employees.
 
 Refer to the details below for more information
-![table](char.png)
+![table](xxx)
 ![chart](Summary_Stat.png)
 
 

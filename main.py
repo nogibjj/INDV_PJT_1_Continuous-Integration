@@ -1,84 +1,48 @@
-import polars as pl
+import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load dataset using Polars
-ppl = pl.read_csv("HR.csv")
+# Load dataset using Pandas
+ppl = pd.read_csv("HR.csv", encoding="utf-8")
+
+# Explore data
+full_desc = ppl.describe().T
+print(full_desc)
 
 # Calculate statistics for Age
-full_desc = ppl.describe()
-age_mean = ppl.select(pl.col("Age").mean()).item()
-age_median = ppl.select(pl.col("Age").median()).item()
-age_std = ppl.select(pl.col("Age").std()).item()
-
-# Convert Polars dataframe to a list for plotting
-ages = ppl.select("Age").to_series().to_list()
+age_mean = ppl["Age"].mean()
+age_median = ppl["Age"].median()
+age_std = ppl["Age"].std()
 
 # Plot histogram for Age
 plt.figure(figsize=(8, 6))
-plt.hist(ages, bins=10, edgecolor="black")
-plt.title("Average retirement age of company A")
+plt.hist(ppl["Age"], bins=10, edgecolor="black")
+plt.title("Average age of employees")
 plt.xlabel("Age")
 plt.ylabel("Frequency")
 plt.show()
 
-# Print statistics
-print(f"Average retirement age of company A is {round(age_mean, 1)}")
-print(f"Median retirement age of company A is {age_median}")
-print(f"Standard Deviation of retirement of company A age is {age_std}")
-print(full_desc)
+# Print descriptive statistics
+print(f"Average age of employees is {round(age_mean, 1)}")
+print(f"Median age of employees is {age_median}")
+print(f"Standard Deviation age of employees is {age_std}")
 
-# import pandas as pd
-# import polars as pl
-# import time
+# Employee Attrition rate
+attrition_counts = ppl['Attrition'].value_counts();
+plt.pie(attrition_counts, labels = attrition_counts.index,autopct='%1.1f%%', startangle = 90,colors=['#33bb55', '#ee1111'])
+plt.title("Employee Attrition"); 
+plt.show()
 
-# # Load dataset (Assume HR.csv is the dataset)
-# csv_file = "HR.csv"
+# Employee Attrition by departments
+def generate_frequency_graph(col_name):
+    temp_grp = ppl.groupby([col_name, 'Attrition']).size().unstack(fill_value=0)
+    temp_grp.columns = ['Attrition_No', 'Attrition_Yes']
+    temp_grp['Percentage Attrition'] = (temp_grp['Attrition_Yes'] / (temp_grp['Attrition_Yes'] + temp_grp['Attrition_No'])) * 100
+    print(temp_grp)
+    
+    temp_grp[['Attrition_No', 'Attrition_Yes']].plot(kind='bar', stacked=False, color=['green', 'red'])
+    plt.xlabel(col_name)
+    plt.ylabel('Count')
+    plt.title(f'Attrition by {col_name}')
+    plt.show()
 
-# # Measure time for Pandas
-# start_time = time.time()
-# ppl_pandas = pd.read_csv(csv_file)
-# age_mean_pandas = ppl_pandas["Age"].mean()
-# age_median_pandas = ppl_pandas["Age"].median()
-# age_std_pandas = ppl_pandas["Age"].std()
-# end_time = time.time()
-# pandas_time = end_time - start_time
-
-# # Measure time for Polars
-# start_time = time.time()
-# ppl_polars = pl.read_csv(csv_file)
-# age_mean_polars = ppl_polars.select(pl.col("Age").mean()).item()
-# age_median_polars = ppl_polars.select(pl.col("Age").median()).item()
-# age_std_polars = ppl_polars.select(pl.col("Age").std()).item()
-# end_time = time.time()
-# polars_time = end_time - start_time
-
-# # Print performance results
-# print(f"Pandas processing time: {pandas_time:.4f} seconds")
-# print(f"Polars processing time: {polars_time:.4f} seconds")
-
-
-# import pandas as pd
-# import matplotlib.pyplot as plt
-
-# # Load dataset
-# ppl = pd.read_csv("HR.csv", index_col="EmployeeNumber", encoding="utf-8")
-
-# # Calculate statistics for Age
-# full_desc = ppl.describe()
-# age_mean = ppl["Age"].mean()
-# age_median = ppl["Age"].median()
-# age_std = ppl["Age"].std()
-
-# # Plot histogram for Age
-# plt.figure(figsize=(8, 6))
-# plt.hist(ppl["Age"], bins=10, edgecolor="black")
-# plt.title("Average retirement age")
-# plt.xlabel("Age")
-# plt.ylabel("Frequency")
-# plt.show()
-
-# # Print statistics
-# print(f"Average retirement age is {round(age_mean, 1)}")
-# print(f"Median retirement age is {age_median}")
-# print(f"Standard Deveiation of retirement age is {age_std}")
-# print(full_desc)
+generate_frequency_graph('Department')
