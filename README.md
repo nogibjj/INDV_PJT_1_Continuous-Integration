@@ -15,10 +15,11 @@ The project structure must include the following files:
     - Tested by using nbval plugin for pytest
 * ***Makefile*** with the following:
     - Run all tests (must test notebook and script and lib)
-    - Formats code with Python black Links to an external site.
-    - Lints code with Ruff Links to an external site.
+    - Formats code with `Python black` Links to an external site.
+    - Lints code with `Ruff` Links to an external site.
     - Installs code via: pip install -r requirements.txt
-* ***test_script.py*** to test script
+* ***main.py*** to run functions 
+* ***test_main.py*** to test script
 * ***test_lib.py*** to test library
 * ***requirements.txt***
 * Gitlab Actions performs all four Makefile commands with badges for each one in the README.md
@@ -33,7 +34,7 @@ Dataset : [HR.csv](HR.csv)
  - Calcuated mean, median, standard Deviation and so on 
 
 Functions :
-- EDA(Exploratory data analysis) : Use `describe` to check the structure and summary statistics of the dataset and compute the mean(`mean`), median(`mediadn`), standard deviation(`std`) of the data set
+- EDA(Exploratory data analysis) : Use `describe` to check the structure and summary statistics of the dataset and compute the mean(`mean`), median(`median`), standard deviation(`std`) of the data set
 - Employee Age Distribution : Plot a histrogram to visualize the age distribution of all employees.
 - Employee attrition rate : Create a plot `pie chart` to illustarte the overall attirition rate and a `bar chart` to analyze attrition by departments.
 
@@ -44,6 +45,6 @@ Functions :
 
 #### Attrition analysis
 -----------
+![data analysis_2](Attrition_pie.png)
 ![data analysis_0](Attrition_dpart_summary.png)\
 ![data analysis_1](Attrition_dprt.png)\
-![data analysis_2](Attrition_pie.png)
