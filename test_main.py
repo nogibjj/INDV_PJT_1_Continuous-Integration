@@ -1,15 +1,14 @@
-import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # matplotlib을 import해야 합니다.
 from main import ppl, age_mean, age_median, age_std
 
 
 def test_age_statistics():
     """
-    Test to validate age statistics (mean, median, std).
+    Test that age statistics (mean, median, std) match the expected values.
     """
-    expected_mean = ppl["Age"].mean()
-    expected_median = ppl["Age"].median()
-    expected_std = ppl["Age"].std()
+    expected_mean = ppl["Age"].mean()  # 예상 평균
+    expected_median = ppl["Age"].median()  # 예상 중앙값
+    expected_std = ppl["Age"].std()  # 예상 표준편차
 
     assert round(age_mean, 1) == round(
         expected_mean, 1
@@ -19,25 +18,25 @@ def test_age_statistics():
     ), f"Expected median: {expected_median}, but got: {age_median}"
     assert age_std == expected_std, f"Expected std: {expected_std}, but got: {age_std}"
 
-    print("All age statistics tests passed successfully.")
+    print("Test_passed: Age statistics are correct.")
 
 
 def test_age_histogram():
     """
-    Test to visually validate the histogram of age distribution.
+    Test that the age histogram is displayed without errors.
     """
     try:
         plt.figure(figsize=(8, 6))
-        plt.hist(ppl["Age"], bins=10, edgecolor="black")
-        plt.title("Average retirement age")
+        ppl["Age"].plot(kind="hist", bins=10, edgecolor="black")
+        plt.title("Age Distribution Histogram")
         plt.xlabel("Age")
         plt.ylabel("Frequency")
         plt.show()
-        print("Histogram test: Success (Check visually)")
+        print("Check histogram: Successfully displayed.")
     except Exception as e:
-        print(f"Histogram test failed: {e}")
+        print(f"Test_failure: {e}")
 
 
 if __name__ == "__main__":
-    test_age_statistics()
-    test_age_histogram()
+    test_age_statistics()  # Descriptive statistics test
+    test_age_histogram()  # Visualization test

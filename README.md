@@ -1,14 +1,25 @@
 # IDS-706 Data Engineering Assignment
-## Mini Project : Polars Descriptive Statistics Script
+## Individual Project : Continuous Integration using Gitlab Actions of Python Data Science Project
 
 #### status(CI/CD) badge
-[![CI](https://github.com/nogibjj/Mini_PJT_3_Polar_ISL/actions/workflows/CICD.yml/badge.svg)](https://github.com/nogibjj/Mini_PJT_3_Polar_ISL/actions/workflows/CICD.yml)
+
 
 ### Requirements
-    1. Python script using Polars for descriptive statistics
-    2. Read a dataset (CSV or Excel)
-    3. Generate summary statistics (mean, median, standard deviation)
-    4. Create at least one data visualization
+The project structure must include the following files:
+
+* ***Jupyter Notebook*** with:
+    - Cells that perform descriptive statistics using Polars or Panda.
+    - Tested by using nbval plugin for pytest
+* ***Makefile*** with the following:
+    - Run all tests (must test notebook and script and lib)
+    - Formats code with Python black Links to an external site.
+    - Lints code with Ruff Links to an external site.
+    - Installs code via: pip install -r requirements.txt
+* ***test_script.py*** to test script
+* ***test_lib.py*** to test library
+* Pinned ***requirements.txt***
+* Gitlab Actions performs all four Makefile commands with badges for each one in the README.md
+
 
 ### Deliverables
     1. Python script 
