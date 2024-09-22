@@ -1,9 +1,12 @@
 # IDS-706 Data Engineering Assignment
 ## Individual Project : Continuous Integration using Gitlab Actions of Python Data Science Project
 
-#### status(CI/CD) badge
-
-
+#### Status(CI/CD) badge
+[![Format](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/format.yml/badge.svg)](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/format.yml)
+[![Install](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/install.yml/badge.svg)](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/install.yml)
+[![Lint](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/lint.yml/badge.svg)](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/lint.yml)
+[![Test](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/test.yml/badge.svg)](https://github.com/nogibjj/INDV_PJT_1_Continuous-Integration/actions/workflows/test.yml)
+------
 ### Requirements
 The project structure must include the following files:
 
@@ -17,45 +20,30 @@ The project structure must include the following files:
     - Installs code via: pip install -r requirements.txt
 * ***test_script.py*** to test script
 * ***test_lib.py*** to test library
-* Pinned ***requirements.txt***
+* ***requirements.txt***
 * Gitlab Actions performs all four Makefile commands with badges for each one in the README.md
-
-
-### Deliverables
-    1. Python script 
-    2. CI/CD with badge
-    3. Generated summary report (PDF or markdown) via CI/CD for extra credit or making your own PDF or MD file and pushing it 
-
+---------
+### Demo video
+[Click Here For Demo](xxxxx)
+--------------
 ### Analysis
 Dataset : [HR.csv](HR.csv) 
  - The data used in this analysis was provided by IBM and was originally created to study employee turnover.
  - From the available variables, I specifically focused on the "Age" at retirement.
  - Calcuated mean, median, standard Deviation and so on 
 
-### Progress
-#### Preperation
-Created Github Repository and required files such as Makerfile, requirement.txt, CICD.yml and so on
+Functions
+- EDA(Exploratory data analysis) : Use `describe` to check the structure and summary statistics of the dataset and compute the mean(`mean`), median(`mediadn`), standard deviation(`std`) of the data set
+- Employee Age Distribution : Plot a histrogram to visualize the age distribution of all employees.
+- Employee attrition rate : Create a plot `pie chart` to illustarte the overall attirition rate and a `bar chart` to analyze attrition by departments.
 
-[YAML](.github/workflows/CICD.yml) \
-[Makerfile](Makerfile)\
-[Requirements](requirements.txt)\
-[testfile](test_main.py)
+#### Summary Statistics
+-----------
+![Exploratory data analysis_1](Summary_Stat.png)
+![Exploratory data analysis_2](Summary_age.png)
 
-#### Analysis
-Built a main.py and `main_test.py` in `main.py` this import CSV file(HR.csv) and calculate average, median, and Standard deviation of retired employees by ***`Polars`***. Additionally, plot a histrogram to visualize the age distrubution of the retired employees.
-
-Refer to the details below for more information
-![table](xxx)
-![chart](Summary_Stat.png)
-
-
-### Extra Credit
-#### Performance test
-
-Please refer to the summarized report in the attached PDF : [Summary_Report_PDF](main_report.pdf)
-
-Here are performance test results comparing Pandas and Polars : [Performance_test](performance_test.py)
-* Pandas processing time: 0.0081 seconds
-* Polars processing time: 0.0034 seconds
-* Polars processing is **58.26%** faster than Pandas
-
+#### Attrition analysis
+-----------
+![data analysis_0](Attrition_dpart_summary.png)
+![data analysis_1](Attrition_dprt.png)
+![data analysis_2](Attrition_pie.png)

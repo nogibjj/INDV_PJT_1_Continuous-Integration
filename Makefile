@@ -21,5 +21,17 @@ refactor: format lint
 
 deploy:
 	#deploy goes here
+
+# generate_and_push:
+# 	# Create the markdown file
+# 	python script.py
+
+# 	# Add, commit, and push the generated files to GitHub
+# 	git config --local user.email "action@github.com"; \
+# 	git config --local user.name "GitHub Action"; \
+# 	git add .; \
+# 	git commit -m "Add generated plots and markdown"; \
+# 	git push; \
+
 		
 all: install lint test format deploy
