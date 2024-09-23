@@ -20,7 +20,6 @@ The project structure must include the following files:
     - Installs code via: pip install -r requirements.txt
 * ***main.py*** to run functions 
 * ***test_main.py*** to test script
-* ***test_lib.py*** to test library
 * ***requirements.txt***
 * Gitlab Actions performs all four Makefile commands with badges for each one in the README.md
 ---------
