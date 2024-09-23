@@ -22,6 +22,8 @@ refactor: format lint
 deploy:
 	#deploy goes here
 
+all: install lint test format deploy
+
 # generate_and_push:
 # 	# Create the markdown file
 # 	python script.py
@@ -32,6 +34,3 @@ deploy:
 # 	git add .; \
 # 	git commit -m "Add generated plots and markdown"; \
 # 	git push; \
-
-		
-all: install lint test format deploy
