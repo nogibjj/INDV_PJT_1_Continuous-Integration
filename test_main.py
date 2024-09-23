@@ -1,42 +1,32 @@
-import matplotlib.pyplot as plt  # matplotlib을 import해야 합니다.
-from main import ppl, age_mean, age_median, age_std
+# test_main.py
+from mylib.lib import (
+    load_data,
+    explore_data,
+    calculate_age_statistics,
+    print_age_statistics,
+)
 
 
-def test_age_statistics():
-    """
-    Test that age statistics (mean, median, std) match the expected values.
-    """
-    expected_mean = ppl["Age"].mean()  # 예상 평균
-    expected_median = ppl["Age"].median()  # 예상 중앙값
-    expected_std = ppl["Age"].std()  # 예상 표준편차
+def test_main_execution():
+    # Load data
+    df = load_data("HR.csv")
+    assert df is not None, "Data should be loaded successfully"
 
-    assert round(age_mean, 1) == round(
-        expected_mean, 1
-    ), f"Expected mean: {expected_mean}, but got: {age_mean}"
-    assert (
-        age_median == expected_median
-    ), f"Expected median: {expected_median}, but got: {age_median}"
-    assert age_std == expected_std, f"Expected std: {expected_std}, but got: {age_std}"
+    # Explore data
+    description = explore_data(df)
+    assert "Age" in description.index, "'Age' should be in the description index"
 
-    print("Test_passed: Age statistics are correct.")
+    # Calculate age statistics
+    age_mean, age_median, age_std = calculate_age_statistics(df)
+    assert age_mean > 0, "Mean age should be a positive number"
+    assert age_median > 0, "Median age should be a positive number"
+    assert age_std > 0, "Standard deviation should be a positive number"
 
+    # Print age statistics (we won't assert print, but we ensure no errors)
+    print_age_statistics(age_mean, age_median, age_std)
 
-def test_age_histogram():
-    """
-    Test that the age histogram is displayed without errors.
-    """
-    try:
-        plt.figure(figsize=(8, 6))
-        ppl["Age"].plot(kind="hist", bins=10, edgecolor="black")
-        plt.title("Age Distribution Histogram")
-        plt.xlabel("Age")
-        plt.ylabel("Frequency")
-        plt.show()
-        print("Check histogram: Successfully displayed.")
-    except Exception as e:
-        print(f"Test_failure: {e}")
+    print("All main.py tests passed!")
 
 
 if __name__ == "__main__":
-    test_age_statistics()  # Descriptive statistics test
-    test_age_histogram()  # Visualization test
+    test_main_execution()

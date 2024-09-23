@@ -33,9 +33,11 @@ Dataset : [HR.csv](HR.csv)
  - Calcuated mean, median, standard Deviation and so on 
 
 Functions :
-- EDA(Exploratory data analysis) : Use `describe` to check the structure and summary statistics of the dataset and compute the mean(`mean`), median(`median`), standard deviation(`std`) of the data set
-- Employee Age Distribution : Plot a histrogram to visualize the age distribution of all employees.
-- Employee attrition rate : Create a plot `pie chart` to illustarte the overall attirition rate and a `bar chart` to analyze attrition by departments.
+- `explore data` : Use `describe` to do exploratory data analysis 
+- `calculate statistics` : compute the mean(`mean`), median(`median`), standard deviation(`std`) of age
+- `plot_age_histogram` : Plot a histrogram to visualize the age distribution of all employees. 
+- `plot_attrition_pie_chart` : Create a plot `pie chart` to illustarte the overall attirition. 
+- `plot_attrition_by_department` : Create a plot `bar chart` to analyze attrition by departments.
 
 #### Summary Statistics
 -----------
